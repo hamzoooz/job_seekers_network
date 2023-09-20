@@ -1,8 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% comment %} 
-{% block header %}
-{% endblock header %} {% endcomment %}
 
 {% block content %}
 	<!-- start banner Area -->
@@ -78,15 +75,12 @@
 						<div class="single-popular-post d-flex flex-row">
 							<div class="thumb">
 								<img class="img-fluid" src="{{ popular_post.image.url }}" alt="">
-								<!-- <img class="img-fluid" src="{% static 'img/p1.png' %}" alt=""> -->
 								<a class="btns text-uppercase" href="#">view job post</a>
 							</div>
 							<div class="details">
 								<a href="#"><h4>{{ popular_post.title }}</h4></a>
 								<h6> {% if popular_post.country %}  {{ popular_post.country }} - {% endif %}   {% if popular_post.cite %} {{ popular_post.cite }}  {% endif %} </h6>
-								<p>
-									{% if popular_post.description %}  {{ popular_post.description }} {% endif %}
-								</p>
+								<p> {% if popular_post.description %}  {{ popular_post.description }} {% endif %} </p>
 							</div>
 						</div>	
 					{% endfor %}																															
@@ -236,22 +230,19 @@
 					<div class="single-slidebar">
 						<h4>Top rated job posts</h4>
 						<div class="active-relatedjob-carusel">
-						{% for jop in best_rating_jobs %}
-						
-						{% endfor %}
+						{% for jop in best_rating_jobs %}						
 							<div class="single-rated">
 								<img class="img-fluid" src="{% static 'img/r1.jpg' %}" alt="">
 								<a href="single.html"><h4>{{ jop.title }}</h4></a>
 								<h6>Premium Labels Limited</h6>
-								<p>
-									{{ jop.description }}
-								</p>
+								<p> {{ jop.description }} </p>
 								{% comment %} # title, description, auther, category, country, cite, create_at, update_at, trend, approve, link, applyed, type, time, slary, location, tage {% endcomment %}
 								<h5>Job Nature:{{ jop.time }}</h5>
 								<p class="address"><span class="lnr lnr-map"></span> {% firstof  jop.country  jop.cite  %}</p>
 								<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
 								<a href="#" class="btns text-uppercase">Apply job</a>
 							</div>
+						{% endfor %}
 																
 						</div>
 					</div>							
@@ -261,8 +252,8 @@
 						<ul class="cat-list">
 						{% for jop in category_job_counts %}
 						
-						{% endfor %}
 							<li><a class="justify-content-between d-flex" href="category.html"><p>{{ jop.category }}</p><span>{{ jop.count }}</span></a></li>
+						{% endfor %}
 							{% comment %} <li><a class="justify-content-between d-flex" href="category.html"><p>Media & News</p><span>57</span></a></li>
 							<li><a class="justify-content-between d-flex" href="category.html"><p>Goverment</p><span>33</span></a></li>
 							<li><a class="justify-content-between d-flex" href="category.html"><p>Medical</p><span>36</span></a></li>
