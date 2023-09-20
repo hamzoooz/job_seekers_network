@@ -230,7 +230,7 @@ $(document).ready(function(){
                 items: 4,
             },
             961: {
-                items: 5,
+                items: 4,
             }
         }
     });

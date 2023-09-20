@@ -103,21 +103,19 @@
 			</div>		
 
 
-			<div class="row align-items-center ">
-			<div class="active-popular-features-carusel">
-				{% for category in categories %}
-					<div class="col-lg-2 col-md-4 col-6">
-						<div class=" popular-post-area">
-							<a href="category">
-								<img src="{{ category.image.url }}" alt="{{ category.title }}">
-							</a>
-							<p>{{ category.title }}</p>
-						</div>
-					</div>		
-				{% endfor %}
-			</div>
-
-
+			<div class="row  ">
+				<div class="active-popular-features-carusel  align-items-center ">
+					{% for category in categories %}
+						<div class="col-lg-3 col-md-4 col-6 ">
+							<div class="text-center">
+								<a href="category">
+									<img src="{{ category.image.url }}" alt="{{ category.title }}">
+								</a>
+								<p>{{ category.title }}</p>
+							</div>
+						</div>		
+					{% endfor %}
+				</div>
 			</div>
 		</div>	
 	</section>
@@ -250,16 +248,11 @@
 					<div class="single-slidebar">
 						<h4>Jobs by Category</h4>
 						<ul class="cat-list">
-						{% for jop in category_job_counts %}
-						
-							<li><a class="justify-content-between d-flex" href="category.html"><p>{{ jop.category }}</p><span>{{ jop.count }}</span></a></li>
+
+						{% for category, job_count in category_job_counts %}
+							<li><a class="justify-content-between d-flex" href="category"><p>{{ category }}</p><span>{{ job_count }} </span></a></li>
 						{% endfor %}
-							{% comment %} <li><a class="justify-content-between d-flex" href="category.html"><p>Media & News</p><span>57</span></a></li>
-							<li><a class="justify-content-between d-flex" href="category.html"><p>Goverment</p><span>33</span></a></li>
-							<li><a class="justify-content-between d-flex" href="category.html"><p>Medical</p><span>36</span></a></li>
-							<li><a class="justify-content-between d-flex" href="category.html"><p>Restaurants</p><span>47</span></a></li>
-							<li><a class="justify-content-between d-flex" href="category.html"><p>Developer</p><span>27</span></a></li>
-							<li><a class="justify-content-between d-flex" href="category.html"><p>Accounting</p><span>17</span></a></li> {% endcomment %}
+						
 						</ul>
 					</div>
 

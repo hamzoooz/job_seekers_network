@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'ckeditor',
+
 ]
 
 MIDDLEWARE = [
@@ -69,6 +71,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'jobs.wsgi.application'
+ 
+CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 
 # Database

@@ -1,5 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+ 
+from ckeditor.fields import RichTextField
+
+class MyModel(models.Model):
+    content = RichTextField()
+
 # Create your models here.
 class Features(models.Model):
     title = models.CharField(max_length=10)
@@ -37,6 +43,7 @@ class Jobs(models.Model):
     country = models.CharField(max_length=15,blank=True, null=True)
     cite = models.CharField(max_length=15,blank=True, null=True)
     image = models.FileField(upload_to="jobs/image" , default='img\post.png')
+    content = RichTextField()
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
     trend = models.BooleanField(default=True)
