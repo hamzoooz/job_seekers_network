@@ -10,7 +10,7 @@ urlpatterns = [
 
     path('elements', views.elements, name='elements'),
     path('search', views.search, name='search'),
-    path('single', views.single, name='single'),
+    path('single/<int:id>', views.single, name='single'),
 ]
 
 

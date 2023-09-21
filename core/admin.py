@@ -5,3 +5,6 @@ from .models  import *
 admin.site.register(Jobs)
 admin.site.register(Category)
 admin.site.register(Features)
+admin.site.register(Profile)
+admin.site.register(Posts)
+admin.site.register(Comments)

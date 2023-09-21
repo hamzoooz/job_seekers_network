@@ -1,16 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
- 
 from ckeditor.fields import RichTextField
 
-class MyModel(models.Model):
-    content = RichTextField()
 
 # Create your models here.
 class Features(models.Model):
     title = models.CharField(max_length=10)
     description = models.CharField(max_length=100)
-    
     
     def __str__(self):
         return f'{self.title} - {self.description}'
@@ -34,7 +30,19 @@ type_of_work = {
     ("by taske" , "by taske"),
     ("other" , "other"),
     }
-  
+
+class Profile(models.Model):
+    user = models.ForeignKey(User , related_name='Profile', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='profile/profiles')
+    cover = models.ImageField(upload_to='profile/covers')
+    location = models.URLField()
+    campany = models.CharField(max_length=50)
+    bio = RichTextField()
+    
+    def __str__(self):
+        return f'{self.id} - {self.campany}'
+    
+    
 class Jobs(models.Model):
     auther = models.ForeignKey(User , on_delete=models.PROTECT ,blank=True, null=True ) 
     title = models.CharField(max_length=100)
@@ -50,7 +58,7 @@ class Jobs(models.Model):
     approve = models.BooleanField(default=False)
     link = models.URLField(blank=True, null=True)
     applyed = models.BooleanField(default=False)
-    type = models.CharField(max_length=50 , choices=type_of_work  ,default="fulltime")
+    type = models.CharField(max_length=50 , choices=type_of_work  ,default="full time")
     time = models.CharField(max_length=50 , choices=time_of_work  ,default="on site")
     slary = models.IntegerField(blank=True, null=True)
     location = models.URLField(blank=True, null=True , default='world')
@@ -62,19 +70,27 @@ class Jobs(models.Model):
     def __str__(self):
         return f"{self.title} - {self.description[0:15]}"
     
-class Profile(models.Model):
-    user = models.OneToOneField(User , related_name='User', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='profile/profiles')
-    cover = models.ImageField(upload_to='profile/covers')
-    location = models.URLField()
-    campany = models.CharField(max_length=50)
+        
+
+class Comments(models.Model):
+    auther = models.ForeignKey(Profile , on_delete=models.CASCADE)
+    comment = models.CharField(max_length=200)
+    create_at = models.DateTimeField(auto_now_add=True)
+    
+
+class Posts(models.Model):
+    auther = models.ForeignKey(Profile , on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    descriptiion = RichTextField()
+    image = models.ImageField(upload_to='post/images')
+    tags = models.CharField(max_length=15)
+    craet_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+    number_of_like = models.IntegerField(default=0)
+    comments = models.ForeignKey(Comments, on_delete=models.CASCADE)
     
     def __str__(self):
-        return f'{self.user.username} - {self.campany}'
-    
-    
-    
-    
+        return self.title    
     
     
     

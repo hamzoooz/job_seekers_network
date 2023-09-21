@@ -185,7 +185,7 @@
 							<div class="details">
 								<div class="title d-flex flex-row justify-content-between">
 									<div class="titles">
-										<a href="single.html"><h4>  {{ job.tite }} </h4></a>
+										<a href="{% url 'single' job.id  %}"><h4>  {{ job.title }} </h4></a>
 										<h6>Premium Labels Limited</h6>					
 									</div>
 									<ul class="btns">
