@@ -5,8 +5,8 @@ from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Features(models.Model):
-    title = models.CharField(max_length=10)
-    description = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=200)
     
     def __str__(self):
         return f'{self.title} - {self.description}'

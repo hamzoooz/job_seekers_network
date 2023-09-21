@@ -80,7 +80,7 @@
 							<div class="details">
 								<a href="#"><h4>{{ popular_post.title }}</h4></a>
 								<h6> {% if popular_post.country %}  {{ popular_post.country }} - {% endif %}   {% if popular_post.cite %} {{ popular_post.cite }}  {% endif %} </h6>
-								<p> {% if popular_post.description %}  {{ popular_post.description }} {% endif %} </p>
+								<p> {% if popular_post.description %}  {{ popular_post.description|truncatewords:20 }} {% endif %} </p>
 							</div>
 						</div>	
 					{% endfor %}																															
@@ -90,7 +90,7 @@
 	</section>
 	<!-- End popular-post Area -->
 	
-	<!-- Start feature-cat Area -->
+	{% comment %} <!-- Start feature-cat Area -->
 	<section class="feature-cat-area  pt-100" id="category">
 		<div class="container">
 			<div class="row d-flex justify-content-center">
@@ -108,7 +108,7 @@
 					{% for category in categories %}
 						<div class="col-lg-3 col-md-4 col-6 ">
 							<div class="text-center">
-								<a href="category">
+								<a href="category"  >
 									<img src="{{ category.image.url }}" alt="{{ category.title }}">
 								</a>
 								<p>{{ category.title }}</p>
@@ -119,7 +119,7 @@
 			</div>
 		</div>	
 	</section>
-	<!-- End feature-cat Area -->
+	<!-- End feature-cat Area --> {% endcomment %}
 	
 	<!-- Start post Area -->
 	<section class="post-area section-gap">
@@ -132,40 +132,7 @@
 						<li><a href="#">Intern</a></li>
 						<li><a href="#">part Time</a></li>
 					</ul>
-					<div class="single-post d-flex flex-row">
-						<div class="thumb">
-							<img src="{% static 'img/post.png' %}" alt="">
-							<ul class="tags">
-								<li>
-									<a href="#">Art</a>
-								</li>
-								<li>
-									<a href="#">Media</a>
-								</li>
-								<li>
-									<a href="#">Design</a>					
-								</li>
-							</ul>
-						</div>
-						<div class="details">
-							<div class="title d-flex flex-row justify-content-between">
-								<div class="titles">
-									<a href="single.html"><h4>Creative Art Designer</h4></a>
-									<h6>Premium Labels Limited</h6>					
-								</div>
-								<ul class="btns">
-									<li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-									<li><a href="#">Apply</a></li>
-								</ul>
-							</div>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-							</p>
-							<h5>Job Nature: Full time</h5>
-							<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-							<p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-						</div>
-					</div>
+
 					{% for job in recent_job %}					
 						<div class="single-post d-flex flex-row">
 							<div class="thumb">
@@ -195,7 +162,7 @@
 								</div>
 								<p>
 								{% comment %} title, description, auther, category, country, cite, create_at, update_at, trend, approve, link, applyed, type, time, slary, location, tage {% endcomment %}
-									{{ job.description }}
+									{{ job.description|truncatewords:33 }}
 								</p>
 								<h5>Job Nature: {{ job.time }}</h5>
 								<p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
@@ -204,7 +171,7 @@
 						</div>
 					{% endfor %}
 
-					<a class="text-uppercase loadmore-btn mx-auto d-block" href="category.html">Load More...</a>
+					<a class="text-uppercase loadmore-btn mx-auto d-block" href="category">Load More...</a>
 
 				</div>
 				<div class="col-lg-4 sidebar">
